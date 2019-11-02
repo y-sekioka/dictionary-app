@@ -9,7 +9,7 @@
                         {{ csrf_field() }}
                         @if (count($errors) > 0)
                             <ul>
-                                @foreach($erroes->all() as $e)
+                                @foreach($errors->all() as $e)
                                     <li>{{ $e }}</li>
                                 @endforeach
                             </ul>

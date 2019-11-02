@@ -33,7 +33,7 @@
                         <th width="50%">説明</th>
                         <th width="10%">操作</th>
                     </tr>
-                        </thead>
+                </thead>
                 <tbody>
                     @foreach ($posts as $word)
                         <tr>
