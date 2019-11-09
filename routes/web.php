@@ -14,11 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::group(['prefix' => 'admin'], function()
     {
         Route::get('word/create', 'Admin\WordController@add');
         Route::post('word/create', 'Admin\WordController@create');
+        Route::post('word/create/json1', 'Admin\WordController@json');
+
         Route::get('word/edit', 'Admin\WordController@edit');
         Route::post('word/edit', 'Admin\WordController@update');
         Route::get('word/delete', 'Admin\WordController@delete');

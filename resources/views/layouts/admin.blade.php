@@ -12,11 +12,37 @@
         <title>@yield('title')</title>
 
         <!-- Scripts -->
-         {{-- Laravel標準で用意されているJavascriptを読み込みます --}}
         <script src="{{ asset('js/app.js') }}" defer></script>
-
-        <!-- Fonts -->
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+        <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script>
+            $(function(){
+                $("#main").on('change',function(){
+                    var mainId = $(this).val();
+                    $.ajax({
+                    beforeSend: function(jqXHR) {
+                        return jqXHR.setRequestHeader('X-CSRF-TOKEN', "{{ csrf_token() }}");
+                    },
+                    url:'create/json1',
+                    dataType:'json',
+                    type:'POST',
+                    data:{
+                        "mainId": mainId
+                    },
+                }).done(function(data,jqXHR){
+                    //サブカテゴリの更新
+                    $('#sub').html("<option value=''>----</option>");
+                   console.log(data);
+                   $.each(data,function(i,val){
+                       $('#sub').append($("<option>").val(val.id).text(val.name));
+                   });
+                }).fail(function (jqXHR, status, error) {
+                    //通信失敗時のエラーをログに出力
+                    console.log(error);
+                });
+            });
+        });
+        </script>
+        <link rel="dns-prefetch" href= "https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->

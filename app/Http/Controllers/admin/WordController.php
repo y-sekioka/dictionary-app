@@ -5,12 +5,19 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Word;
+use App\Main_category;
+use App\Sub_category;
 class WordController extends Controller
 {
     public function add()
         {
-            $types = config('type');
-            return  view('admin.word.create')->with(['types' => $types]);
+            $main_categories = Main_category::all();
+            $sub_categories = Sub_category::all();
+            //$json1 = $request->all();
+            //$mainId = $request->mainId;
+            //$select_sub_categories = Sub_category::where('main_category_id',$mainId)->get()->toArray();
+            //$data = response()->json($select_sub_categories);
+            return view('admin.word.create', ['main_categories' => $main_categories,'sub_categories' => $sub_categories,]);//'select_sub_categories'=> $select_sub_categories,'$data'=> $data]);
         }
     public function create(Request $request)
         {
@@ -21,6 +28,12 @@ class WordController extends Controller
             $word->fill($form);
             $word->save();
             return redirect('admin/word/create');
+        }
+    public function json(Request $request)
+        {
+            $json1= $request->all();
+            $select_sub_categories = Sub_category::where('main_category_id',$json1)->get();
+            return $select_sub_categories;
         }
     public function edit(Request $request)
         {
