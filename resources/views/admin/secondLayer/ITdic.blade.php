@@ -9,6 +9,9 @@
             <a href="{{ action('Admin\WordController@php_index') }}">PHP用語一覧</a>
         </div>
         <div class="row row-big">
+            <a href="{{ action('Admin\WordController@seo_index') }}">SEO用語一覧</a>
+        </div>
+        <div class="row row-big">
             <a href="{{ action('Admin\WordController@index') }}">登録単語一覧</a>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        {{-- 各ページごとにtitleタグを入れるために@yieldで空けておきます。 --}}
+        {{-- 各ページごとにtitleタグを入れる。 --}}
         <title>@yield('title')</title>
 
         <!-- Scripts -->
@@ -51,7 +51,7 @@
     </head>
     <body>
         <div id="app">
-           {{-- 画面上部に表示するナビゲーションバーです。 --}}
+           {{-- 画面上部に表示するナビゲーションバー。 --}}
             <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
                 <div class="container">
                     <a class="navbar-brand" href="{{ action('Admin\WordController@second') }}">IT辞典</a>
@@ -77,7 +77,7 @@
             {{-- ここまでナビゲーションバー --}}
 
             <main class="py-4">
-                {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
+                {{-- コンテンツをここに入れる --}}
                 @yield('content')
             </main>
         </div>

@@ -30,6 +30,8 @@ Route::group(['prefix' => 'admin'], function()
         Route::get('secondLayer/ITdic','Admin\WordController@second');
 
         Route::get('word/php_index', 'Admin\WordController@php_index');
+        
+        Route::get('word/seo_index', 'Admin\WordController@seo_index');
 
         Route::get('category/dictionary', 'Admin\CategoryController@get_dictionary');
         Route::post('category/dictionary', 'Admin\CategoryController@dictionary');

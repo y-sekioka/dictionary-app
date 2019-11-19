@@ -38,11 +38,13 @@ class WordController extends Controller
     public function edit(Request $request)
         {
             $word = Word::find($request->id);
+            $main_categories = Main_category::all();
+            $sub_categories = Sub_category::all();
             if (empty($word)) 
                 {
                     abort(404);
                 }
-            return view('admin.word.edit', ['word_form' => $word]);
+            return view('admin.word.edit', ['word_form' => $word,'main_categories'=>$main_categories,'sub_categories'=>$sub_categories]);
         }
     public function update(Request $request)
         {
@@ -84,10 +86,23 @@ class WordController extends Controller
                 }
             else
                 {
-                    $posts = Word::where('type2','PHP')->get();
+                    $posts = Word::where('type2','3')->get();
                 }
             return view('admin.word.php_index', ['posts' => $posts, 'cond_title' => $cond_title]);
         }
+    public function seo_index(Request $request)
+    {
+        $cond_title = $request->cond_title;
+        if ($cond_title != '')
+            {
+                $posts = Word::where('word', 'like', "%$cond_title%")->get();
+            }
+        else
+            {
+                $posts = Word::where('type','2')->get();
+            }
+        return view('admin.word.seo_index', ['posts' => $posts, 'cond_title' => $cond_title]);
+    }
     public function top(Request $request)
         {
             $cond_title = $request->cond_title;

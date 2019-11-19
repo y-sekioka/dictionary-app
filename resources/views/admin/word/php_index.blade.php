@@ -38,7 +38,7 @@
                     @foreach ($posts as $word)
                         <tr>
                             <td>{{ str_limit($word->word, 100) }}</td>
-                            <td>{{ str_limit($word->explain, 250) }}</td>
+                            <td>{{ str_limit($word->explain, 300) }}</td>
                             <td>
                                 <div>
                                     <a href="{{ action('Admin\WordController@edit', ['id' => $word->id]) }}">編集</a>
