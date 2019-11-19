@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.wordRegister')
 @section('title','単語編集')
 @section('content')
         <div class="container">
