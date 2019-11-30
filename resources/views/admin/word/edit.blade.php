@@ -36,7 +36,7 @@
                                 </select>
                                     
                                 <select class="children" name="type2" id= "sub">
-                                    <option value="">単語の詳細な分類を選択してください</option>
+                                    <option value="">----</option>
                                 </select>
                             </div>
                         </div>

@@ -30,7 +30,7 @@
                     },
                 }).done(function(data,jqXHR){
                     //サブカテゴリの更新
-                    $('#sub').html("<option value=''>----</option>");
+                    $('#sub').html("<option value=''>単語の詳細な分類を選択してください</option>");
                    console.log(data);
                    $.each(data,function(i,val){
                        $('#sub').append($("<option>").val(val.id).text(val.name));
@@ -41,6 +41,11 @@
                 });
             });
         });
+        </script>
+        <script>//フラッシュメッセージをフェードアウト
+            $(function(){
+                $('.flash_message_white').fadeOut(3000);
+            });
         </script>
         <link rel="dns-prefetch" href= "https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">

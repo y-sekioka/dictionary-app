@@ -40,12 +40,18 @@
                             </select>
                             
                             <select class="children" name="type2" id= "sub">
-                                <option value="">単語の詳細な分類を選択してください</option>
+                                <option value="">----</option>
                             </select>
                         </div>
                     </div>
                     <input type="submit" class="btn btn-primary" value="追加">
                 </form>
+                {{--フラッシュメッセージ--}}
+                @if (session('flash_message'))
+                    <div class="flash_message_white">
+                        {{ session('flash_message') }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

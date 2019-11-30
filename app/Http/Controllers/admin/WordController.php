@@ -27,7 +27,7 @@ class WordController extends Controller
             unset($form['_token']);
             $word->fill($form);
             $word->save();
-            return redirect('admin/word/create');
+            return redirect('admin/word/create')->with('flash_message','投稿が完了しました');
         }
     public function json(Request $request)
         {
@@ -56,7 +56,7 @@ class WordController extends Controller
             // 該当するデータを上書きして保存する
             $word->fill($word_form)->save();
       
-            return redirect('admin/word/index');
+            return redirect('admin/word/index')->with('flash_message','編集が完了しました');
         }
     public function delete(Request $request)
         {
@@ -116,7 +116,7 @@ class WordController extends Controller
                 }
             return view('admin.top.home', ['posts'=> $posts, 'cond_title'=> $cond_title]);
         }
-    public function second(Request $request)
+    public function second()
         {
             return view('admin.secondLayer.ITdic');
         }

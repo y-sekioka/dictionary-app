@@ -20,7 +20,7 @@
     <body>
         <div id="app">
            {{-- 画面上部に表示するナビゲーションバー。 --}}
-            <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
+            <nav class="navbar navbar-expand-md navbar-dark navbar-laravel global_nav">
                 <div class="container">
                     <a class="navbar-brand" href="{{ action('Admin\WordController@second') }}">IT辞典</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

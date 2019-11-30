@@ -25,8 +25,6 @@ Route::group(['prefix' => 'admin'], function()
         Route::get('word/delete', 'Admin\WordController@delete');
         Route::get('word/index', 'Admin\WordController@index');
 
-        Route::get('home', 'Admin\WordController@top');
-
         Route::get('secondLayer/ITdic','Admin\WordController@second');
 
         Route::get('word/php_index', 'Admin\WordController@php_index');
@@ -46,3 +44,4 @@ Route::group(['prefix' => 'admin'], function()
         Route::get('category/sub_category_delete', 'Admin\CategoryController@sub_category_delete');
     }
 );
+Route::get('home', 'Admin\WordController@top');
