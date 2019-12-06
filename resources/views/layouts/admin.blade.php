@@ -29,9 +29,12 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav mr-auto">
+                        <ul class="navbar-nav mr-auto nav-items">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ action('Admin\WordController@top') }}">トップページへ</a>
+                                <a class="nav-link nav-border" href="{{ action('Admin\WordController@top') }}">トップページへ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-border" href="{{ action('Admin\WordController@add') }}">単語登録</a>
                             </li>
                         </ul>
 

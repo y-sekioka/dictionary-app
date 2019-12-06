@@ -40,7 +40,7 @@
                             </select>
                             
                             <select class="children" name="type2" id= "sub">
-                                <option value="">----</option>
+                                <option value= ''>----</option>
                             </select>
                         </div>
                     </div>

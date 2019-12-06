@@ -1,9 +1,7 @@
 .col-md-2{
   font-size:20px;
 }
-.global_nav:hover{
-  opacity:0.5;
-}
+
 body {
   background-repeat: no-repeat;
   background-position: center;
@@ -14,7 +12,7 @@ body {
 .flash_message_white{
   width:240px;
   height:30px;
-  background-color:white;
+  background-color:#fff;
   text-align:center;
   margin:0 auto;
 }
@@ -26,12 +24,39 @@ body {
 }
 
 .navbar-brand {
-  color: #fff !important;
+  color: #fff;
 }
 
+.nav-item {
+  cursor:pointer;
+  display:block;
+  float:left;
+}
+.nav-border{
+  display: flex;
+  align-items: center;
+}
+.nav-border:before,
+.nav-border:after{
+  border:0.5px solid #fff;
+  height:20px;
+  content: '';
+  flex-grow: 1;
+}
+.nav-border:before{
+  margin-right:1rem;
+}
+.nav-border:after{
+  margin-left:1rem;
+}
+.nav-link:hover{
+  opacity:0.8;
+  border-bottom:0.5px solid #fff;
+}
 .nav-link {
   color: #fff !important;
 }
+
 .table{
   background-color:#000;
 }
