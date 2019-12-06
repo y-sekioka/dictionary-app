@@ -84,5 +84,8 @@
                 </table>
             </div>
         </div>
+        <div category_link>
+            <a href="{{ action('Admin\CategoryController@get_sub_category')}}">サブカテゴリへ</a>
+        </div>
     </div>
 @endsection

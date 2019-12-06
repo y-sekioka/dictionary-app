@@ -14,5 +14,10 @@
         <div class="row row-big">
             <a href="{{ action('Admin\WordController@index') }}">登録単語一覧</a>
         </div>
+        @foreach ($posts as $post)
+            <div class="row row-big">
+                <a href="{{ action('Admin\WordController@index_master',['id'=>$post->id]) }}">{{$post->name}}</a>
+            </div>
+        @endforeach
     </div>
 @endsection

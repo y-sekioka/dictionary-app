@@ -50,5 +50,8 @@
                 </table>
             </div>
         </div>
+        <div category_link>
+                <a href="{{ action('Admin\CategoryController@get_main_category')}}">メインカテゴリへ</a>
+        </div>
     </div>
 @endsection

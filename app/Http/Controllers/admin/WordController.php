@@ -118,6 +118,12 @@ class WordController extends Controller
         }
     public function second()
         {
-            return view('admin.secondLayer.ITdic');
+            $posts = Main_category::where('dictionary_id','1')->get();
+            return view('admin.secondLayer.ITdic', ['posts'=> $posts]);
+        }
+    public function index_master(Request $request)
+        {
+            $data = $request->all();
+            return view('admin.word.index_2',['data'=> $data]);
         }
 }

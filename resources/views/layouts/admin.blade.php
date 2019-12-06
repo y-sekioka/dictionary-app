@@ -36,6 +36,9 @@
                             <li class="nav-item">
                                 <a class="nav-link nav-border" href="{{ action('Admin\WordController@add') }}">単語登録</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-border" href="{{ action('Admin\CategoryController@get_dictionary')}}">カテゴリ登録</a>
+                            </li>
                         </ul>
 
                         <!-- Right Side Of Navbar -->
