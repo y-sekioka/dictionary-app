@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8 mx-auto">
+            <div class="col-md-8">
                 <h2>サブカテゴリ登録</h2>
                 <form action="{{ action('Admin\CategoryController@sub_category') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
@@ -15,23 +15,24 @@
                         </ul>
                     @endif
                     <div class="form-group row">
-                        <label class="col-md-2" for="sub_category_label">サブカテゴリ名</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" name="name" value="">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="name" value="" placeholder="サブカテゴリ名">
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-md-2" for="main_category_id_label">メインカテゴリID</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" name="main_category_id" value="">
-                        </div>
+                    <div class="form-group row col-md-8">
+                        <select class="form-control" name="main_category_id">
+                            <option value="">属する分類を選択してください</option>
+                                @foreach($main_posts as $main_post)
+                                    <option value="{{ $main_post->id }}">{{ $main_post->name }}</option>
+                                @endforeach
+                        </select>
                     </div>
                     <input type="submit" class="btn btn-primary" value="追加">
                 </form>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-8 max-auto">
+            <div class="col-md-8">
                 <table class="table table-dark">
                     <thead>
                         <tr>
@@ -58,8 +59,8 @@
                 </table>
             </div>
         </div>
-        <div class="row" style = float:right;>
-            <div class="col-md-8 max-auto">
+        <div class="row">
+            <div class="col-md-8">
                 <table class="table table-dark">
                     <thead>
                         <tr>

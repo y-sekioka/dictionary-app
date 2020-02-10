@@ -1,9 +1,9 @@
 @extends('layouts.admin')
-@section('title','SEO学習中の単語一覧')
+@section('title', '登録済みの単語一覧')
 @section('content')
     <div class="container">
         <div class="row">
-            <h2>SEO学習用語一覧</h2>
+            <h2>登録済みの単語一覧</h2>
         </div>
         <div class="row">
             <div col-md-4>
@@ -29,16 +29,22 @@
             <table class="table table-dark">
                 <thead>
                     <tr>
+                        <th width="10%">ID</th>
                         <th width="20%">単語名</th>
-                        <th width="50%">説明</th>
+                        <th width="40%">説明</th>
+                        <th width="10%">type</th>
+                        <th width="10%">type2</th>
                         <th width="10%">操作</th>
                     </tr>
-                        </thead>
+                </thead>
                 <tbody>
                     @foreach ($posts as $word)
                         <tr>
+                            <td>{{ str_limit($word->id,100) }}</td>
                             <td>{{ str_limit($word->word, 100) }}</td>
-                            <td>{{ str_limit($word->explain, 500) }}</td>
+                            <td>{{ str_limit($word->explain, 300) }}</td>
+                            <td>{{ str_limit($word->type,100)}} </td>
+                            <td>{{ str_limit($word->type2,100) }}</td>
                             <td>
                                 <div>
                                     <a href="{{ action('Admin\WordController@edit', ['id' => $word->id]) }}">編集</a>

@@ -89,12 +89,7 @@ class CategoryController extends Controller
     public function sub_category_delete(Request $request)
         {
             $sub_category = Sub_category::find($request->id);
-            $items = Sub_category::where('id', '>', $request->id)->get();
             $sub_category->delete();
-            foreach($items as $item) {
-                $item->id -= 1;
-                $item->save();
-            }
             return redirect('admin/category/sub_category');
         }
 }

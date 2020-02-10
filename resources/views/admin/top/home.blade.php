@@ -17,24 +17,11 @@
             <div class="row row-title">
                 <h1>辞書サイトトップページ</h1>
             </div>
+            @foreach ($posts as $post)
             <div class="row row-big">
-                <a href="{{ action('Admin\WordController@second') }}">IT辞書へ</a>
+                <a href="{{ action('Admin\WordController@dictionary_master',['id'=>$post->id,'name'=>$post->name]) }}">{{$post->name}}</a>
             </div>
-            <div class="row">
-                <form action="{{ action('Admin\WordController@index') }}" method="get">
-                    <div class="form-group row">
-                        <label class="col-md-4">IT辞書の<br>単語名</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="cond_title" value="{{ $cond_title }}">
-                            {{ csrf_field() }}
-                        </div>
-                    
-                        <div class="col-md-2">
-                        <input type="submit" class="btn btn-primary" value="検索">
-                        </div>
-                    </div>
-                </form>
-            </div>
+            @endforeach
         </div>
     </body>
 </html>

@@ -1,7 +1,16 @@
-.col-md-2{
+.category_css{
   font-size:20px;
 }
-
+.row-big a{
+  /*secondLayer*/
+  font-size:40px;
+}
+.row-title h1{
+  /*secondLayer*/
+  font-size:50px;
+  text-align:left;
+  padding:20px;
+}
 body {
   background-repeat: no-repeat;
   background-position: center;
@@ -9,7 +18,11 @@ body {
   background-image: url('img/yellow.jpg');
   background-size:cover;
 }
+.table_block{
+  display:inline;
+}
 .flash_message_white{
+  /*wordRegister,edit*/
   width:240px;
   height:30px;
   background-color:#fff;
@@ -18,19 +31,51 @@ body {
 }
 .navbar-laravel {
   background-color: #000;
-  opacity:0.8;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+/*↓　admin,top ↓*/
+.nav-category:hover{
+  background-color:blue;
+}
+.drop_menu{
+  width:100%;
+  position: absolute;
+  margin-top:79px;
+  margin-left: -5px;
+  padding:0;
+  background:#000;
+  display:none;
+  z-index:99;
+}
+.drop_menu li{
+  background-color:#000;
 
+}
+.drop_menu li a{
+  display:block;
+}
 .navbar-brand {
   color: #fff;
 }
-
+.dropdwn_space{
+  margin-bottom:40px;
+}
+.nav-items {
+  text-align: center;
+  list-style-type:none;
+  display:flex;
+}
 .nav-item {
   cursor:pointer;
-  display:block;
+  position:relative;
+  display:flex;
   float:left;
+  color:#fff !important;
+  max-width:1200px;
+}
+.nav-item a{
+  color:#fff !important;
 }
 .nav-border{
   display: flex;
@@ -50,11 +95,11 @@ body {
   margin-left:1rem;
 }
 .nav-link:hover{
-  opacity:0.8;
+  opacity:0.9;
   border-bottom:0.5px solid #fff;
 }
 .nav-link {
-  color: #fff !important;
+  color: #fff;
 }
 
 .table{

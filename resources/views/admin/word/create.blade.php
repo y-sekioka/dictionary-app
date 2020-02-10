@@ -4,9 +4,6 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <div col-md-4 style=margin-left:65%;>
-                    <a href="{{ action('Admin\WordController@seo_index') }}" role="button" class="btn btn-primary">SEO用語一覧へ</a>
-                </div>
                 <h2>単語登録</h2>
                 <form action="{{ action('Admin\WordController@create') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
@@ -38,7 +35,7 @@
                                         <option value="{{ $main_category->id }}">{{ $main_category->name }}</option>
                                     @endforeach
                             </select>
-                            
+                            <br>
                             <select class="children" name="type2" id= "sub">
                                 <option value= ''>----</option>
                             </select>

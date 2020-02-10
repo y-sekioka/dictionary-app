@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Word;
+use App\Dictionary_category;
 use App\Main_category;
 use App\Sub_category;
 class WordController extends Controller
@@ -13,11 +14,7 @@ class WordController extends Controller
         {
             $main_categories = Main_category::all();
             $sub_categories = Sub_category::all();
-            //$json1 = $request->all();
-            //$mainId = $request->mainId;
-            //$select_sub_categories = Sub_category::where('main_category_id',$mainId)->get()->toArray();
-            //$data = response()->json($select_sub_categories);
-            return view('admin.word.create', ['main_categories' => $main_categories,'sub_categories' => $sub_categories,]);//'select_sub_categories'=> $select_sub_categories,'$data'=> $data]);
+            return view('admin.word.create', ['main_categories' => $main_categories,'sub_categories' => $sub_categories,]);
         }
     public function create(Request $request)
         {
@@ -31,7 +28,7 @@ class WordController extends Controller
         }
     public function json(Request $request)
         {
-            $json1= $request->all();
+            $json1= $request->all(); //選択したメインカテゴリのID
             $select_sub_categories = Sub_category::where('main_category_id',$json1)->get();
             return $select_sub_categories;
         }
@@ -56,13 +53,13 @@ class WordController extends Controller
             // 該当するデータを上書きして保存する
             $word->fill($word_form)->save();
       
-            return redirect('admin/word/index')->with('flash_message','編集が完了しました');
+            return redirect('admin/word/hyper_index')->with('flash_message','編集が完了しました');
         }
     public function delete(Request $request)
         {
             $word = Word::find($request->id);
             $word->delete();
-            return redirect('admin/word/index');
+            return redirect('admin/word/hyper_index');
         }
     public function index(Request $request)
         {
@@ -75,7 +72,7 @@ class WordController extends Controller
                 {
                     $posts = Word::all();
                 }
-            return view('admin.word.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+            return view('admin.word.hyper_index', ['posts' => $posts, 'cond_title' => $cond_title]);
         }
     public function php_index(Request $request)
         {
@@ -103,27 +100,53 @@ class WordController extends Controller
             }
         return view('admin.word.seo_index', ['posts' => $posts, 'cond_title' => $cond_title]);
     }
-    public function top(Request $request)
+    public function top() //get_top_page
         {
-            $cond_title = $request->cond_title;
-            if ($cond_title != '')
-                {
-                    $posts = Word::where('word', 'like', "%$cond_title%")->get();
-                }
-            else
-                {
-                    $posts = Word::all();
-                }
-            return view('admin.top.home', ['posts'=> $posts, 'cond_title'=> $cond_title]);
+            $posts = Dictionary_category::all();
+            return view('admin.top.home', ['posts'=> $posts]);
         }
-    public function second()
-        {
-            $posts = Main_category::where('dictionary_id','1')->get();
-            return view('admin.secondLayer.ITdic', ['posts'=> $posts]);
-        }
-    public function index_master(Request $request)
+    //public function second() //get_second_page
+        //{
+            //$posts = Main_category::where("dictionary_id","1")->get();
+            //return view('admin.secondLayer.ITdic', ['posts'=> $posts]);
+        //}
+    public function main_category_master(Request $request) //second_page to third_page link
+    //「プログラミング言語」等、親カテゴリをクリックしたタイミングで発動
         {
             $data = $request->all();
-            return view('admin.word.index_2',['data'=> $data]);
+            $data_name = $request->input('name');
+            $data_id = $request->id;
+            $dictionary_id = $request->dictionary_id;//navbar用
+            $dictionary_name = $request->dictionary_name;//navbar用
+            $posts = Sub_category::where("main_category_id","$data_id")->get();
+            return view('admin.thirdLayer.index_2',['posts'=>$posts,'data'=> $data,'data_name'=>$data_name,'data_id'=>$data_id,'dictionary_id'=>$dictionary_id,'dictionary_name'=>$dictionary_name]);
+        }
+    public function dictionary_master(Request $request) //top_page to second_page link
+    //「○○辞書」をクリックしたタイミングで発動
+        {
+            $data = $request->all();
+            $data_name = $request->input('name');
+            $data_id = $request->id;
+            $posts = Main_category::where("dictionary_id","$data_id")->get();
+            return view('admin.secondLayer.dictionary', ['data'=>$data,'data_id'=>$data_id, 'data_name'=>$data_name,'posts'=>$posts]);
+        }
+    public function index_master(Request $request)
+    //「PHP言語」等、子カテゴリをクリックしたタイミングで発動
+        {
+            $data = $request->all();
+            $data_name = $request->input('name');
+            $data_id = $request->id;
+            $type2_id = Sub_category::where("id","$data_id")->first()->id;
+            $dictionary_id = $request->dictionary_id;
+            $dictionary_name = $request->dictionary_name;
+            $posts = Word::where("type2","$type2_id")->get();
+            return view('admin.word.index',['data'=>$data,'type2_id'=>$type2_id,'data_name'=>$data_name,'data_id'=>$data_id,'dictionary_id'=>$dictionary_id,'dictionary_name'=>$dictionary_name,'posts'=>$posts]);
+        }
+    //それぞれのページのnavbarから一つ上に戻るアクションを以下に記載。
+    public function index_to_main(Request $request)
+        {
+            $page_id = $request->id;
+            $posts = Sub_category::where("main_category_id","$page_id")->get();
+            return view('admin.thirdLayer.index_2',['posts'=>$posts]);
         }
 }

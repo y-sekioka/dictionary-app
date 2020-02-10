@@ -23,9 +23,8 @@ Route::group(['prefix' => 'admin'], function()
         Route::get('word/edit', 'Admin\WordController@edit');
         Route::post('word/edit', 'Admin\WordController@update');
         Route::get('word/delete', 'Admin\WordController@delete');
-        Route::get('word/index', 'Admin\WordController@index');
+        Route::get('word/hyper_index', 'Admin\WordController@hyper_index');
 
-        Route::get('secondLayer/ITdic','Admin\WordController@second');
         Route::get('word/php_index', 'Admin\WordController@php_index');
         Route::get('word/seo_index', 'Admin\WordController@seo_index');
 
@@ -40,8 +39,11 @@ Route::group(['prefix' => 'admin'], function()
         Route::get('category/sub_category', 'Admin\CategoryController@get_sub_category');
         Route::post('category/sub_category', 'Admin\CategoryController@sub_category');
         Route::get('category/sub_category_delete', 'Admin\CategoryController@sub_category_delete');
-
-        Route::get('word/index_master', 'Admin\WordController@index_master');
     }
 );
 Route::get('home', 'Admin\WordController@top');
+Route::get('home/dictionary_master','Admin\WordController@dictionary_master');
+
+Route::get('second/main_category_master', 'Admin\WordController@main_category_master');
+
+Route::get('word/index_master', 'Admin\WordController@index_master');

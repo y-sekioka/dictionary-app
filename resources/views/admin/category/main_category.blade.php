@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8 mx-auto">
+            <div class="col-md-8">
                 <h2>メインカテゴリ登録</h2>
                 <form action="{{ action('Admin\CategoryController@main_category') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
@@ -15,15 +15,18 @@
                         </ul>
                     @endif
                     <div class="form-group row">
-                        <label class="col-md-2" for="main_category_label">メインカテゴリ名</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" name="name" value="">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="name" value="" placeholder="メインカテゴリ名">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-2" for="dictionary_id_label">辞書ID</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" name="dictionary_id" value="">
+                        <div class="col-md-8">
+                            <select class="form-contol" name="dictionary_id">
+                                <option value="">属する辞書を選択してください</option>
+                                    @foreach($dictionary_posts as $dictionary_post)
+                                        <option value="{{ $dictionary_post->id }}">{{ $dictionary_post->name }}</option>
+                                    @endforeach
+                            </select>
                         </div>
                     </div>
                     <input type="submit" class="btn btn-primary" value="追加">
@@ -31,7 +34,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-8 max-auto">
+            <div class="col-md-8">
                 <table class="table table-dark">
                     <thead>
                         <tr>
@@ -58,14 +61,14 @@
                 </table>
             </div>
         </div>
-        <div class="row" style = float:right;>
-            <div class="col-md-8 max-auto">
+        <div class="row">
+            <div class="col-md-8">
                 <table class="table table-dark">
                     <thead>
                         <tr>
-                            <th width=10%>id</th>
-                            <th width=20%>辞書名</th>
-                            <th width=10%>操作</th>
+                            <th width=20%>id</th>
+                            <th width=50%>辞書名</th>
+                            <th width=30%>操作</th>
                         </tr>
                     </thead>
                     <tbody>
