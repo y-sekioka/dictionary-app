@@ -14,7 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-    'name' => env('yashiro_nav', 'IT辞典'),
+    'name' => env('yashiro_nav', 'My辞書'),
     /*
     |--------------------------------------------------------------------------
     | Application Environment

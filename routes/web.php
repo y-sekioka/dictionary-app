@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix' => 'admin'], function()
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
     {
         Route::get('word/create', 'Admin\WordController@add');
         Route::post('word/create', 'Admin\WordController@create');
@@ -39,11 +39,19 @@ Route::group(['prefix' => 'admin'], function()
         Route::get('category/sub_category', 'Admin\CategoryController@get_sub_category');
         Route::post('category/sub_category', 'Admin\CategoryController@sub_category');
         Route::get('category/sub_category_delete', 'Admin\CategoryController@sub_category_delete');
+
+        Route::get('home/dictionary_master','Admin\WordController@dictionary_master');
+        Route::get('second/main_category_master', 'Admin\WordController@main_category_master');
+        Route::get('word/index_master', 'Admin\WordController@index_master');
     }
 );
 Route::get('home', 'Admin\WordController@top');
-Route::get('home/dictionary_master','Admin\WordController@dictionary_master');
+//Route::get('home/dictionary_master','Admin\WordController@dictionary_master');
 
-Route::get('second/main_category_master', 'Admin\WordController@main_category_master');
+//Route::get('second/main_category_master', 'Admin\WordController@main_category_master');
 
-Route::get('word/index_master', 'Admin\WordController@index_master');
+//Route::get('word/index_master', 'Admin\WordController@index_master');
+
+Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');　Authで元々生成されてたホームページ

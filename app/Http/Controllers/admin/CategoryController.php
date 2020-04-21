@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Dictionary_category;
 use App\Main_category;
@@ -12,7 +13,8 @@ class CategoryController extends Controller
 {
     public function get_dictionary()
         {
-            $posts = Dictionary_category::all();
+            $user_id = Auth::id();
+            $posts = Dictionary_category::where('user_id',"$user_id")->get();
             return view('admin/category/dictionary_category',['posts'=> $posts]);
         }
     public function dictionary(Request $request)
@@ -23,13 +25,18 @@ class CategoryController extends Controller
             $dictionary_category = new Dictionary_category();
             $dictionary_category->id = Dictionary_category::max('id')+1;
             $dictionary_category->name = $validatedData['name'];
+            $dictionary_category->user_id = Auth::id();
             $dictionary_category->save();
             return redirect('admin/category/dictionary');
         }
     public function get_main_category()
         {
-            $posts = Main_category::all();
-            $dictionary_posts = Dictionary_category::all();
+            $user_id = Auth::id();
+            $my_dictionary_id = Dictionary_category::where('user_id','=', $user_id)->pluck('id');
+            //ログイン中のユーザーが登録したDictionaryのIDを抽出。
+            $posts = Main_category::where('dictionary_id', '=', $my_dictionary_id)->get();
+            //抽出したIDと一致するデータをメインカテゴリテーブルから抽出。
+            $dictionary_posts = Dictionary_category::where('user_id','=', $user_id)->get();
             return view('admin/category/main_category',['posts'=> $posts, 'dictionary_posts'=> $dictionary_posts]);
         }
     public function main_category(Request $request)
@@ -47,8 +54,14 @@ class CategoryController extends Controller
         }
     public function get_sub_category()
         {
-            $posts = Sub_category::all();
-            $main_posts = Main_category::all();
+            $user_id = Auth::id();
+            $my_dictionary_id = Dictionary_category::where('user_id','=', $user_id)->pluck('id');
+            //ログイン中のユーザーが登録したDictionaryのIDを抽出。
+            $main_id = Main_category::where('dictionary_id', '=', $my_dictionary_id)->pluck('id');
+            //抽出したIDと一致するデータのIDをメインカテゴリテーブルから抽出。
+            $posts = Sub_category::where('main_category_id', '=', $main_id)->get();
+            //ログイン中のユーザーが登録したメインカテゴリのIDと一致するサブカテゴリを抽出。
+            $main_posts = Main_category::where('dictionary_id', '=', $my_dictionary_id)->get();
             return view('admin/category/sub_category',['posts'=> $posts, 'main_posts'=> $main_posts]);
         }
     public function sub_category(Request $request)

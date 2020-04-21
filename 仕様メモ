@@ -1,0 +1,16 @@
+・本アプリは
+    ・トップページ（辞書選択ページ）
+        →Second Layer（メインカテゴリ選択ページ）
+        →Third Layer（サブカテゴリ選択ページ）
+        →index_master(絞り込まれた単語の一覧ページ)
+    ・単語登録ページ
+    ・辞書・メインカテゴリ・サブカテゴリ登録ページ
+    ・Authを使ったログインページ
+　によって構成されている。
+
+・admin.css & admin.bladeが全層共通のフォーム。
+・「WordRegister.blade」、「top.blade」の内容はadmin.bladeのとほぼ同じだが、
+    →親カテゴリを選択した時に自動でサブカテゴリが絞られるjQueryが書き加えられている（WordRegister）。
+    →navbar-brandクラスの内容が独自のものとなっている。　という違いがある。
+・使用している言語：PHP & Laravel(5.8)
+　　　　　　　　　：Javascript（jQuery)　→Ajax(非同期処理）、ナビゲーションバーのドロップメニューの表示に使用。

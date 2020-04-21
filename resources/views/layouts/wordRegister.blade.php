@@ -59,27 +59,57 @@
     <body>
         <div id="app">
            {{-- 画面上部に表示するナビゲーションバー。 --}}
-            <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
-                <div class="container">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+           <nav class="navbar navbar-expand-md navbar-laravel global_nav">
+            <div class="container">
+                <a class="navbar-brand" href="{{ action('Admin\WordController@top') }}">{{"My辞書"}}</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ action('Admin\WordController@top') }}">トップページへ</a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto nav-items">
+                        <li class="nav-item">
+                            <a class="nav-link nav-border" href="{{ action('Admin\WordController@top') }}">トップページへ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-border" href="{{ action('Admin\WordController@add') }}">単語登録へ</a>
+                        </li>
+                        <li class="nav-item nav-border nav-link dropdwn">カテゴリ登録へ
+                            <ul class="drop_menu">
+                                <li><a class="nav-link nav-category" href="{{ action('Admin\CategoryController@get_dictionary')}}">辞書登録</a></li>
+                                <li><a class="nav-link nav-category" href="{{ action('Admin\CategoryController@get_main_category')}}">メインカテゴリ登録</a></li>
+                                <li><a class="nav-link nav-category" href="{{ action('Admin\CategoryController@get_sub_category')}}">サブカテゴリ登録</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        @guest
+                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('login') }}</a></li>
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+                                        @csrf
+                                    </form>
+                                </div>
                             </li>
-                        </ul>
-
-                        <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ml-auto">
-                            <!-- Authentication Links -->
-                        </ul>
-                    </div>
+                        @endguest
+                        <!-- Authentication Links -->
+                    </ul>
                 </div>
-            </nav>
+            </div>
+        </nav>
             {{-- ここまでナビゲーションバー --}}
 
             <main class="py-4">
@@ -87,5 +117,23 @@
                 @yield('content')
             </main>
         </div>
+        {{-- script --}}
+        <script src="{{ asset('js/app.js') }}" defer></script>
+        {{-- PC版サイトにてカテゴリ登録のドロップダウンを表示させる --}}
+        <script> $(function(){
+        $('.dropdwn').hover(function(){
+            $("ul:not(:animated)", this).slideDown();
+        }, function(){
+            $('.drop_menu',this).slideUp();
+        });
+    });
+        </script>
+        {{-- モバイル版サイトにてカテゴリ登録のスライドダウンを表示させる --}}
+        <script> $(function(){
+            $('.dropdwn').click(function(){
+                $("ul:not(:animated)", this).slideToggle(200);
+            });
+        });
+        </script>
     </body>
 </html>

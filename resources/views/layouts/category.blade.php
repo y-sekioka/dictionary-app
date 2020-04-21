@@ -21,9 +21,9 @@
     <body>
         <div id="app">
             {{-- 画面上部に表示するナビゲーションバー。 --}}
-            <nav class="navbar navbar-expand-md navbar-dark navbar-laravel global_nav">
+            <nav class="navbar navbar-expand-md navbar-laravel global_nav">
                 <div class="container">
-                    <a class="navbar-brand" style=color:white;>カテゴリ登録</a>
+                    <a class="navbar-brand" href="{{ action('Admin\WordController@top') }}">{{"My辞書"}}</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -62,13 +62,21 @@
         </div>
         {{-- script --}}
         <script src="{{ asset('js/app.js') }}" defer></script>
-    <script> $(function(){
+        {{-- PC版サイトにてカテゴリ登録のドロップダウンを表示させる --}}
+        <script> $(function(){
         $('.dropdwn').hover(function(){
             $("ul:not(:animated)", this).slideDown();
         }, function(){
             $('.drop_menu',this).slideUp();
         });
     });
+        </script>
+        {{-- モバイル版サイトにてカテゴリ登録のスライドダウンを表示させる --}}
+        <script> $(function(){
+            $('.dropdwn').click(function(){
+                $("ul:not(:animated)", this).slideToggle(200);
+            });
+        });
         </script>
     </body>
 </html>

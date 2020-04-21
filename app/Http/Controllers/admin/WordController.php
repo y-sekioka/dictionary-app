@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Word;
 use App\Dictionary_category;
@@ -12,6 +13,8 @@ class WordController extends Controller
 {
     public function add()
         {
+            $user_id = Auth::id();
+            //$main_categories = Main_category::where('user_id',"$user_id")->get();
             $main_categories = Main_category::all();
             $sub_categories = Sub_category::all();
             return view('admin.word.create', ['main_categories' => $main_categories,'sub_categories' => $sub_categories,]);
@@ -59,7 +62,7 @@ class WordController extends Controller
         {
             $word = Word::find($request->id);
             $word->delete();
-            return redirect('admin/word/hyper_index');
+            return redirect('admin/word/create');
         }
     public function index(Request $request)
         {
@@ -102,7 +105,8 @@ class WordController extends Controller
     }
     public function top() //get_top_page
         {
-            $posts = Dictionary_category::all();
+            $user_id = Auth::id();
+            $posts = Dictionary_category::where('user_id',"$user_id")->get();
             return view('admin.top.home', ['posts'=> $posts]);
         }
     //public function second() //get_second_page
@@ -149,4 +153,7 @@ class WordController extends Controller
             $posts = Sub_category::where("main_category_id","$page_id")->get();
             return view('admin.thirdLayer.index_2',['posts'=>$posts]);
         }
+    public function test_date(){
+        return view('admin.TEST_folder.test');
+    }
 }

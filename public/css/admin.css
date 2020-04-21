@@ -35,6 +35,9 @@ body {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 /*↓　admin,top ↓*/
+.dropdwn {
+  z-index:999;
+}
 .nav-category:hover{
   background-color:blue;
 }
@@ -48,9 +51,13 @@ body {
   display:none;
   z-index:99;
 }
+@media (max-width:576px){
+  .dropdwn{
+    display:none;
+  }
+}
 .drop_menu li{
   background-color:#000;
-
 }
 .drop_menu li a{
   display:block;
@@ -71,11 +78,8 @@ body {
   position:relative;
   display:flex;
   float:left;
-  color:#fff !important;
+  color:#fff;
   max-width:1200px;
-}
-.nav-item a{
-  color:#fff !important;
 }
 .nav-border{
   display: flex;
@@ -86,7 +90,6 @@ body {
   border:0.5px solid #fff;
   height:20px;
   content: '';
-  flex-grow: 1;
 }
 .nav-border:before{
   margin-right:1rem;

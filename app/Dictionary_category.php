@@ -10,5 +10,6 @@ class Dictionary_category extends Model
     protected $table = 'dictionary_category';
     public static $rules = array(
         'name' => 'required',
+        'user_id' => 'required',
     );
 }
