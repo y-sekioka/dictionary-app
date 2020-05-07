@@ -56,7 +56,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/admin.css') }}" rel ="stylesheet">
     </head>
-    <body>
+    <body style="background-image: url('/css/img/{{Auth::user()->theme}}.jpg');">
         <div id="app">
            {{-- 画面上部に表示するナビゲーションバー。 --}}
            <nav class="navbar navbar-expand-md navbar-laravel global_nav">

@@ -29,7 +29,13 @@
                                 <a href="{{ action('Admin\WordController@edit', ['id' => $word->id]) }}">編集</a>
                             </div>
                             <div>
-                                <a href="{{ action('Admin\WordController@delete', ['id' => $word->id]) }}">削除</a>
+                                <a href="{{ action('Admin\WordController@delete', [
+                                    'id' => $data_id,
+                                    'name' => $data_name,
+                                    'dictionary_id' => $dictionary_id,
+                                    'dictionary_name' => $dictionary_name,
+                                    'word_id' => $word->id
+                                ]) }}">削除</a>
                             </div>
                         </td>
                     </tr>

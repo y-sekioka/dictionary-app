@@ -18,7 +18,7 @@
         <link href="{{ asset('css/admin.css') }}" rel ="stylesheet">
         <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     </head>
-    <body>
+    <body style="background-image: url('/css/img/{{Auth::user()->theme}}.jpg');">
         <div id="app">
            {{-- 画面上部に表示するナビゲーションバー。 --}}
             <nav class="navbar navbar-expand-md navbar-laravel global_nav">
@@ -43,6 +43,9 @@
                                     <li><a class="nav-link nav-category" href="{{ action('Admin\CategoryController@get_main_category')}}">メインカテゴリ登録</a></li>
                                     <li><a class="nav-link nav-category" href="{{ action('Admin\CategoryController@get_sub_category')}}">サブカテゴリ登録</a></li>
                                 </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ action('Admin\UserController@mypage') }}">マイページ</a>
                             </li>
                         </ul>
 

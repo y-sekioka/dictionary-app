@@ -12,10 +12,10 @@
   padding:20px;
 }
 body {
-  background-repeat: no-repeat;
+  /*background-repeat: no-repeat;*/
   background-position: center;
   background-color: #fff;
-  background-image: url('img/yellow.jpg');
+  /*background-image: url('img/yellow.jpg');*/
   background-size:cover;
 }
 .table_block{

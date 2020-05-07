@@ -60,9 +60,19 @@ class WordController extends Controller
         }
     public function delete(Request $request)
         {
-            $word = Word::find($request->id);
+            //$word = Word::find($request->id);
+            //$word->delete();
+            //return redirect('admin/word/create');
+            $data = $request->all();
+            $id = $data['word_id'];
+            $word = Word::find($id);
             $word->delete();
-            return redirect('admin/word/create');
+            return redirect(route('index_master', [
+                'id' => $data['id'],
+                'name' => $data['name'],
+                'dictionary_id' => $data['dictionary_id'],
+                'dictionary_name' => $data['dictionary_name']
+            ]));
         }
     public function index(Request $request)
         {

@@ -42,7 +42,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
 
         Route::get('home/dictionary_master','Admin\WordController@dictionary_master');
         Route::get('second/main_category_master', 'Admin\WordController@main_category_master');
-        Route::get('word/index_master', 'Admin\WordController@index_master');
+        //Route::get('word/index_master', 'Admin\WordController@index_master');
+        Route::get('word/index_master', 'Admin\WordController@index_master')->name('index_master');
+
+        Route::get('user/mypage','Admin\UserController@mypage');
+        Route::get('user/edit', 'Admin\UserController@edit' );
+        Route::post('user/edit/{id}', 'Admin\UserController@update' )->name('user.update');
     }
 );
 Route::get('home', 'Admin\WordController@top');
