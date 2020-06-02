@@ -18,6 +18,7 @@ class CreateWordsTable extends Migration
             $table->string('word');
             $table->string('explain');
             $table->string('type');
+            $table->string('type2');
             $table->timestamps();
         });
     }

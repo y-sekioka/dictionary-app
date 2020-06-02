@@ -16,6 +16,7 @@ class DictionaryCategoryTable extends Migration
         Schema::create('dictionary_category', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->bigInteger('user_id');
             $table->timestamps();
         });
     }

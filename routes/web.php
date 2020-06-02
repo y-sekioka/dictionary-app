@@ -48,9 +48,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
         Route::get('user/mypage','Admin\UserController@mypage');
         Route::get('user/edit', 'Admin\UserController@edit' );
         Route::post('user/edit/{id}', 'Admin\UserController@update' )->name('user.update');
+
+        Route::get('word/search', 'Admin\WordController@search_index');
+        Route::post('word/search', 'Admin\WordController@search')->name('word.search');
+        Route::post('word/search/json1', 'Admin\WordController@search_json');
     }
 );
-Route::get('home', 'Admin\WordController@top');
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::get('home', 'Admin\WordController@top');
+});
+//Route::get('home', 'Admin\WordController@top');
 //Route::get('home/dictionary_master','Admin\WordController@dictionary_master');
 
 //Route::get('second/main_category_master', 'Admin\WordController@main_category_master');
