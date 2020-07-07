@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class MainCategoryTable extends Migration
+class UpdateSubCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class MainCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('main_category',function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('dictionary_id');
+        Schema::table('sub_category', function (Blueprint $table) {
+            //user_idカラムを追加
             $table->bigInteger('user_id');
-            $table->timestamps();
         });
     }
 
@@ -29,6 +26,8 @@ class MainCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('main_category');
+        Schema::table('sub_category', function (Blueprint $table) {
+            $table->dropColumn('user_id');
+        });
     }
 }

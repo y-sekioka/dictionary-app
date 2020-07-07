@@ -49,6 +49,7 @@ class CategoryController extends Controller
             $main_category->id = Main_category::max('id')+1;
             $main_category->name = $validatedData['name'];
             $main_category->dictionary_id = $validatedData['dictionary_id'];
+            $main_category->user_id = Auth::id();
             $main_category->save();
             return redirect('admin/category/main_category');
         }
@@ -74,6 +75,7 @@ class CategoryController extends Controller
             $sub_category->id = Sub_category::max('id')+1;
             $sub_category->name = $validatedData['name'];
             $sub_category->main_category_id = $validatedData['main_category_id'];
+            $sub_category->user_id = Auth::id();
             $sub_category->save();
             return redirect('admin/category/sub_category');
         }

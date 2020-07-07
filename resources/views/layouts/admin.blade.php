@@ -45,7 +45,10 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ action('Admin\UserController@mypage') }}">マイページ</a>
+                                <a class="nav-link nav-border" href="{{ action('Admin\UserController@mypage') }}">マイページ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-border" href="{{ action('Admin\WordController@search_index') }}">検索ページ</a>
                             </li>
                         </ul>
 

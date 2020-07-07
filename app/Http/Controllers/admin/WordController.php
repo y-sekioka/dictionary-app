@@ -14,10 +14,9 @@ class WordController extends Controller
     public function add()
         {
             $user_id = Auth::id();
-            //$main_categories = Main_category::where('user_id',"$user_id")->get();
-            $main_categories = Main_category::all();
-            $sub_categories = Sub_category::all();
-            return view('admin.word.create', ['main_categories' => $main_categories,'sub_categories' => $sub_categories,]);
+            $main_categories = Main_category::where('user_id',"$user_id")->get();
+            $sub_categories = Sub_category::where('user_id',"$user_id")->get();
+            return view('admin.word.create', compact('main_categories','sub_categories'));
         }
     public function create(Request $request)
         {
@@ -25,6 +24,7 @@ class WordController extends Controller
             $word = new Word;
             $form = $request->all();
             unset($form['_token']);
+            $word->user_id = Auth::id();
             $word->fill($form);
             $word->save();
             return redirect('admin/word/create')->with('flash_message','投稿が完了しました');
@@ -99,19 +99,19 @@ class WordController extends Controller
                 //}
             //return view('admin.word.php_index', ['posts' => $posts, 'cond_title' => $cond_title]);
         //}
-    public function seo_index(Request $request)
-    {
-        $cond_title = $request->cond_title;
-        if ($cond_title != '')
-            {
-                $posts = Word::where('word', 'like', "%$cond_title%")->get();
-            }
-        else
-            {
-                $posts = Word::where('type','2')->get();
-            }
-        return view('admin.word.seo_index', compact('posts', 'cond_title'));
-    }
+    //public function seo_index(Request $request)
+    //{
+        //$cond_title = $request->cond_title;
+        //if ($cond_title != '')
+            //{
+               // $posts = Word::where('word', 'like', "%$cond_title%")->get();
+            //}
+        //else
+            //{
+                //$posts = Word::where('type','2')->get();
+            //}
+        //return view('admin.word.seo_index', compact('posts', 'cond_title'));
+   // }
     public function top() //get_top_page
     {
         $user_id = Auth::id();
@@ -136,10 +136,14 @@ class WordController extends Controller
     }
     public function search(Request $request){
         $form_data = $request->all();
+        $user_id = Auth::id();
         $search_word = $form_data['search_word'];
         $search_result = [];
         if ($search_word != '') {
-            $search_result = Word::where('word', 'like', "%$search_word%")->get();
+            $search_result = Word::where([
+                ['user_id', "$user_id"],
+                ['word', 'like', "%$search_word%"]
+            ])->get();
         }
         return view('admin.word.search_result', compact('search_word', 'search_result'));
     }

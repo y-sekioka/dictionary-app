@@ -7,9 +7,7 @@
             <a href="{{ action('Admin\WordController@add') }}" role="button" class="btn btn-primary">新規作成</a>
         </div>
     </div>
-    {{$type2_id}}
     <br>
-    {{$posts}}
     <div class="row">
         <table class="table table-dark">
             <thead>

@@ -33,9 +33,6 @@
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto nav-items">
                             <li class="nav-item">
-                                <a class="nav-link nav-border" href="{{ action('Admin\WordController@top') }}">トップページへ</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link nav-border" href="{{ action('Admin\WordController@add') }}">単語登録へ</a>
                             </li>
                             <li class="nav-item nav-border nav-link dropdwn">カテゴリ登録へ
@@ -44,6 +41,12 @@
                                     <li><a class="nav-link nav-category" href="{{ action('Admin\CategoryController@get_main_category')}}">メインカテゴリ登録</a></li>
                                     <li><a class="nav-link nav-category" href="{{ action('Admin\CategoryController@get_sub_category')}}">サブカテゴリ登録</a></li>
                                 </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-border" href="{{ action('Admin\UserController@mypage') }}">マイページ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-border" href="{{ action('Admin\WordController@search_index') }}">検索ページ</a>
                             </li>
                         </ul>
 

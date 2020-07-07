@@ -6,5 +6,13 @@ body {
     background-size:cover;
   }
 /*.profile_group{
-
 }*/
+.profile_title{
+  font-size:25px;
+}
+.profile_element{
+  font-size:20px;
+}
+.link-font{
+  font-size:25px;
+}

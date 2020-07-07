@@ -39,6 +39,9 @@
                                     <li><a class="nav-link nav-category" href="{{ action('Admin\CategoryController@get_sub_category')}}">サブカテゴリ登録</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-border" href="{{ action('Admin\WordController@search_index') }}">検索ページ</a>
+                            </li>
                         </ul>
 
                         <!-- Right Side Of Navbar -->

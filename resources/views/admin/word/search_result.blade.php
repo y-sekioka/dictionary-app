@@ -1,5 +1,5 @@
 @if(count($search_result) == 0)
-    <p class="no_data">※検索文字列「{{ $search_word }}」を含むする単語がありませんでした。</p>
+    <p class="no_data">※検索文字列「{{ $search_word }}」を含む単語がありませんでした。</p>
 @else
 <table>
     <thead>
