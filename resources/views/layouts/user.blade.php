@@ -12,7 +12,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/admin.css') }}" rel ="stylesheet">
         <link href="{{ asset('css/user.css') }}" rel ="stylesheet">
-        <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     </head>
     <body style="background-image: url('/css/img/{{Auth::user()->theme}}.jpg');">
         <div id="app">
