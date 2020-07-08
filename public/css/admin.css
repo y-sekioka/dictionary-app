@@ -16,6 +16,7 @@ body {
   background-position: center;
   background-color: #fff;
   background-size:cover;
+  height:1200px;
 }
 .table_block{
   display:inline;
