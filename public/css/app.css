@@ -4345,6 +4345,7 @@ input[type=button].btn-block {
 }
 
 .navbar {
+  height:58px;
   position: relative;
   display: flex;
   flex-wrap: wrap;
