@@ -83,12 +83,12 @@ class CategoryController extends Controller
     public function dictionary_delete(Request $request)
         {
             $dictionary_category = Dictionary_category::find($request->id);
-            $items = Dictionary_category::where('id', '>', $request->id)->get();
+            //$items = Dictionary_category::where('id', '>', $request->id)->get();
             $dictionary_category->delete();
-            foreach($items as $item) {
-                $item->id -= 1;
-                $item->save();
-            }
+            //foreach($items as $item) {
+                //$item->id -= 1;
+                //$item->save();
+            //}
             return redirect('admin/category/dictionary');
         }
     public function main_category_delete(Request $request)
