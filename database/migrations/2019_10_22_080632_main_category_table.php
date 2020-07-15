@@ -16,7 +16,7 @@ class MainCategoryTable extends Migration
         Schema::create('main_category',function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('dictionary_id');
+            $table->bigInteger('dictionary_id');
             $table->timestamps();
         });
     }
