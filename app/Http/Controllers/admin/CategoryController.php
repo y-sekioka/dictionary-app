@@ -15,7 +15,7 @@ class CategoryController extends Controller
         {
             $user_id = Auth::id();
             $posts = Dictionary_category::where('user_id',"$user_id")->get();
-            return view('admin/category/dictionary_category',['posts'=> $posts]);
+            return view('admin/category/dictionary',['posts'=> $posts]);
         }
     public function dictionary(Request $request)
         {
@@ -32,11 +32,11 @@ class CategoryController extends Controller
     public function get_main_category()
         {
             $user_id = Auth::id();
-            $my_dictionary_id = Dictionary_category::where('user_id','=', $user_id)->pluck('id');
+            $my_dictionary_id = Dictionary_category::where('user_id',"$user_id")->pluck('id');
             //ログイン中のユーザーが登録したDictionaryのIDを抽出。
-            $posts = Main_category::where('dictionary_id', '=', $my_dictionary_id)->get();
+            $posts = Main_category::where('dictionary_id', $my_dictionary_id)->get();
             //抽出したIDと一致するデータをメインカテゴリテーブルから抽出。
-            $dictionary_posts = Dictionary_category::where('user_id','=', $user_id)->get();
+            $dictionary_posts = Dictionary_category::where('user_id', $user_id)->get();
             //ユーザーIDが一致する辞書カテゴリを全て抽出。
             return view('admin/category/main_category',['posts'=> $posts, 'dictionary_posts'=> $dictionary_posts]);
         }
@@ -83,12 +83,12 @@ class CategoryController extends Controller
     public function dictionary_delete(Request $request)
         {
             $dictionary_category = Dictionary_category::find($request->id);
-            //$items = Dictionary_category::where('id', '>', $request->id)->get();
+            $items = Dictionary_category::where('id', '>', $request->id)->get();
             $dictionary_category->delete();
-            //foreach($items as $item) {
-                //$item->id -= 1;
-                //$item->save();
-            //}
+            foreach($items as $item) {
+                $item->id -= 1;
+                $item->save();
+            }
             return redirect('admin/category/dictionary');
         }
     public function main_category_delete(Request $request)
