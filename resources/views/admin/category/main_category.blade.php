@@ -1,7 +1,7 @@
-11{{-- @extends('layouts.category')
+@extends('layouts.category')
 @section('title','メインカテゴリ登録')
-@section('content') --}}
-    {{-- <div class="container">
+@section('content')
+    <div class="container">
         <div class="row">
             <div class="col-md-8">
                 <h2>メインカテゴリ登録</h2>
@@ -39,18 +39,18 @@
                     <thead>
                         <tr>
                             <th width=20%>id</th>
-                            <th width=30%>メインカテゴリ名</th> --}} --}}
-                            {{-- <th width=20%>辞書id</th> --}}
-                            {{-- <th width=20%>操作</th>
+                            <th width=30%>メインカテゴリ名</th>
+                            {{-- <th width=20%>辞書id</th>  --}}
+                            <th width=20%>操作</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($posts as $post)
                             <tr>
-                                <td>{{ str_limit($post->id, 100) }}</td>
-                                <td>{{ str_limit($post->name,100) }}</td> --}}
-                                {{-- <td>{{ str_limit($post->dictionary_id,100) }}</td> --}}
-                               {{--  <td>
+                                <td>{{ str_limit($post->id, 300) }}</td>
+                                <td>{{ str_limit($post->name,300) }}</td>
+                               {{--  <td>{{ str_limit($post->dictionary_id,100) }}</td> --}}
+                                <td>
                                     <div>
                                         <a href="{{ action('Admin\CategoryController@main_category_delete', ['id' => $post->id]) }}">削除</a>
                                     </div>
@@ -74,8 +74,8 @@
                     <tbody>
                         @foreach ($dictionary_posts as $dictionary_post)
                             <tr>
-                                <td>{{ str_limit($dictionary_post->id, 100) }}</td>
-                                <td>{{ str_limit($dictionary_post->name,100) }}</td>
+                                <td>{{ str_limit($dictionary_post->id, 300) }}</td>
+                                <td>{{ str_limit($dictionary_post->name,300) }}</td>
                                 <td>
                                     <div>
                                         <a href="{{ action('Admin\CategoryController@dictionary_delete', ['id' => $dictionary_post->id]) }}">削除</a>
