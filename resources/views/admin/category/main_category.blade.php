@@ -61,7 +61,7 @@
                 </table>
             </div>
         </div>
-        <div class="row">
+       {{--  <div class="row">
             <div class="col-md-8">
                 <table class="table table-dark">
                     <thead>
@@ -86,7 +86,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div> --}}
         <div category_link>
             <a href="{{ action('Admin\CategoryController@get_sub_category')}}">サブカテゴリへ</a>
         </div>
