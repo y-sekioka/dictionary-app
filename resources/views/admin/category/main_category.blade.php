@@ -1,7 +1,7 @@
 @extends('layouts.category')
 @section('title','メインカテゴリ登録')
 @section('content')
-    <div class="container">
+    {{-- <div class="container">
         <div class="row">
             <div class="col-md-8">
                 <h2>メインカテゴリ登録</h2>
@@ -35,11 +35,11 @@
         </div>
         <div class="row">
             <div class="col-md-8">
-                {{-- <table class="table table-dark">
+                <table class="table table-dark">
                     <thead>
                         <tr>
                             <th width=20%>id</th>
-                            <th width=30%>メインカテゴリ名</th> --}}
+                            <th width=30%>メインカテゴリ名</th> --}} --}}
                             {{-- <th width=20%>辞書id</th> --}}
                             {{-- <th width=20%>操作</th>
                         </tr>
@@ -58,7 +58,7 @@
                             </tr>
                         @endforeach
                     </tbody>
-                </table> --}}
+                </table>
             </div>
         </div>
         <div class="row">
