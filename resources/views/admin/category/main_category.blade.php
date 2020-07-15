@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h2>メインカテゴリ登録</h2>
-                <? var_dump($posts) ?>
+                <? var_dump($dictionary_posts) ?>
                 <form action="{{ action('Admin\CategoryController@main_category') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     @if (count($errors) > 0)
@@ -41,7 +41,7 @@
                         <tr>
                             <th width=20%>id</th>
                             <th width=50%>メインカテゴリ名</th>
-                            {{-- <th width=20%>辞書id</th>  --}}
+                            {{-- <th width=20%>user_id</th> --}}
                             <th width=10%>操作</th>
                         </tr>
                     </thead>
@@ -50,7 +50,7 @@
                             <tr>
                                 <td>{{ str_limit($post->id, 300) }}</td>
                                 <td>{{ str_limit($post->name,300) }}</td>
-                               {{--  <td>{{ str_limit($post->dictionary_id,100) }}</td> --}}
+                                <td>{{ str_limit($post->user_id,100) }}</td>
                                 <td>
                                     <div>
                                         <a href="{{ action('Admin\CategoryController@main_category_delete', ['id' => $post->id]) }}">削除</a>
