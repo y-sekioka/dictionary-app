@@ -35,22 +35,22 @@
         </div>
         <div class="row">
             <div class="col-md-8">
-                <table class="table table-dark">
+                {{-- <table class="table table-dark">
                     <thead>
                         <tr>
                             <th width=20%>id</th>
-                            <th width=30%>メインカテゴリ名</th>
+                            <th width=30%>メインカテゴリ名</th> --}}
                             {{-- <th width=20%>辞書id</th> --}}
-                            <th width=20%>操作</th>
+                            {{-- <th width=20%>操作</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($posts as $post)
                             <tr>
                                 <td>{{ str_limit($post->id, 100) }}</td>
-                                <td>{{ str_limit($post->name,100) }}</td>
+                                <td>{{ str_limit($post->name,100) }}</td> --}}
                                 {{-- <td>{{ str_limit($post->dictionary_id,100) }}</td> --}}
-                                <td>
+                               {{--  <td>
                                     <div>
                                         <a href="{{ action('Admin\CategoryController@main_category_delete', ['id' => $post->id]) }}">削除</a>
                                     </div>
@@ -58,7 +58,7 @@
                             </tr>
                         @endforeach
                     </tbody>
-                </table>
+                </table> --}}
             </div>
         </div>
         <div class="row">
