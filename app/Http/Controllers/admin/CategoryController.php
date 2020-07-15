@@ -31,14 +31,14 @@ class CategoryController extends Controller
         }
     public function get_main_category()
         {
-            $user_id = Auth::id();
+            /* $user_id = Auth::id();
             $my_dictionary_id = Dictionary_category::where('user_id','=', $user_id)->pluck('id');
             //ログイン中のユーザーが登録したDictionaryのIDを抽出。
             $posts = Main_category::where('dictionary_id', '=', $my_dictionary_id)->get();
             //抽出したIDと一致するデータをメインカテゴリテーブルから抽出。
-            $dictionary_posts = Dictionary_category::where('user_id','=', $user_id)->get();
+            $dictionary_posts = Dictionary_category::where('user_id','=', $user_id)->get(); */
             //ユーザーIDが一致する辞書カテゴリを全て抽出。
-            return view('admin/category/main_category',['posts'=> $posts, 'dictionary_posts'=> $dictionary_posts]);
+            return view('admin/category/main_category'/* ,['posts'=> $posts, 'dictionary_posts'=> $dictionary_posts] */);
         }
     public function main_category(Request $request)
         {
