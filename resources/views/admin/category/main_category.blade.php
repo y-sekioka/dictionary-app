@@ -67,7 +67,7 @@
                     <thead>
                         <tr>
                             <th width=20%>id</th>
-                            <th width=50%>辞書名</th>
+                            <th width=30%>辞書名</th>
                             <th width=30%>操作</th>
                         </tr>
                     </thead>
