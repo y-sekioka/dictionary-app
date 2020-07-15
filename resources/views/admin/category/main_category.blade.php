@@ -20,14 +20,14 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-md-8">
+                        {{-- <div class="col-md-8">
                             <select class="form-contol" name="dictionary_id">
                                 <option value="">属する辞書を選択してください</option>
                                     @foreach($dictionary_posts as $dictionary_post)
                                         <option value="{{ $dictionary_post->id }}">{{ $dictionary_post->name }}</option>
                                     @endforeach
                             </select>
-                        </div>
+                        </div> --}}
                     </div>
                     <input type="submit" class="btn btn-primary" value="追加">
                 </form>
@@ -40,7 +40,7 @@
                         <tr>
                             <th width=20%>id</th>
                             <th width=30%>メインカテゴリ名</th>
-                            <th width=20%>辞書id</th>
+                            {{-- <th width=20%>辞書id</th> --}}
                             <th width=20%>操作</th>
                         </tr>
                     </thead>
@@ -49,7 +49,7 @@
                             <tr>
                                 <td>{{ str_limit($post->id, 100) }}</td>
                                 <td>{{ str_limit($post->name,100) }}</td>
-                                <td>{{ str_limit($post->dictionary_id,100) }}</td>
+{{--                                 <td>{{ str_limit($post->dictionary_id,100) }}</td> --}}
                                 <td>
                                     <div>
                                         <a href="{{ action('Admin\CategoryController@main_category_delete', ['id' => $post->id]) }}">削除</a>
