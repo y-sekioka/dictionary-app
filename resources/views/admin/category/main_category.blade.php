@@ -1,6 +1,6 @@
-@extends('layouts.category')
+11{{-- @extends('layouts.category')
 @section('title','メインカテゴリ登録')
-@section('content')
+@section('content') --}}
     {{-- <div class="container">
         <div class="row">
             <div class="col-md-8">
