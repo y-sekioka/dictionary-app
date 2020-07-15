@@ -5,6 +5,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h2>メインカテゴリ登録</h2>
+                <? var_dump($posts) ?>
                 <form action="{{ action('Admin\CategoryController@main_category') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     @if (count($errors) > 0)
@@ -28,7 +29,7 @@
                                     @endforeach
                             </select>
                         </div>
-                    </div>
+                    </div> 
                     <input type="submit" class="btn btn-primary" value="追加">
                 </form>
             </div>
@@ -39,9 +40,9 @@
                     <thead>
                         <tr>
                             <th width=20%>id</th>
-                            <th width=30%>メインカテゴリ名</th>
+                            <th width=50%>メインカテゴリ名</th>
                             {{-- <th width=20%>辞書id</th>  --}}
-                            <th width=20%>操作</th>
+                            <th width=10%>操作</th>
                         </tr>
                     </thead>
                     <tbody>
