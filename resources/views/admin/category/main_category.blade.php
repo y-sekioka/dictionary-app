@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h2>メインカテゴリ登録</h2>
-                <form action="{{ action('Admin\CategoryController@main_category') }}" method="post" enctype="multipart/form-data">
+                {{-- <form action="{{ action('Admin\CategoryController@main_category') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     @if (count($errors) > 0)
                         <ul>
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <input type="submit" class="btn btn-primary" value="追加">
-                </form>
+                </form> --}}
             </div>
         </div>
         <div class="row">
