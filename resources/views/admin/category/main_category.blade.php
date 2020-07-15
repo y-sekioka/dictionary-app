@@ -50,7 +50,7 @@
                             <tr>
                                 <td>{{ str_limit($post->id, 300) }}</td>
                                 <td>{{ str_limit($post->name,300) }}</td>
-                                <td>{{ str_limit($post->user_id,100) }}</td>
+                                {{-- <td>{{ str_limit($post->user_id,100) }}</td> --}}
                                 <td>
                                     <div>
                                         <a href="{{ action('Admin\CategoryController@main_category_delete', ['id' => $post->id]) }}">削除</a>

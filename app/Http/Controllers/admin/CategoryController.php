@@ -15,7 +15,7 @@ class CategoryController extends Controller
         {
             $user_id = Auth::id();
             $posts = Dictionary_category::where('user_id',"$user_id")->get();
-            return view('admin/category/dictionary',['posts'=> $posts]);
+            return view('admin/category/dictionary_category',['posts'=> $posts]);
         }
     public function dictionary(Request $request)
         {
