@@ -5,7 +5,6 @@
         <div class="row">
             <div class="col-md-8">
                 <h2>メインカテゴリ登録</h2>
-                <? var_dump($dictionary_posts) ?>
                 <form action="{{ action('Admin\CategoryController@main_category') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     @if (count($errors) > 0)
