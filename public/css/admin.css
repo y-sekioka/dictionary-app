@@ -44,8 +44,9 @@ body {
 .drop_menu{
   width:100%;
   position: absolute;
-  margin-top:79px;
-  margin-left: -5px;
+  top:40px;
+  /* margin-top:79px;
+  margin-left: -5px; */
   padding:0;
   background:#000;
   display:none;
