@@ -14,6 +14,10 @@
 /* Route::get('/', function () {
     return view('welcome');
 }); */
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::get('/', 'Admin\WordController@top');
+});
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
     {
         Route::get('word/create', 'Admin\WordController@add');
