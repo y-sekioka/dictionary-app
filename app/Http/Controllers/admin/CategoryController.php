@@ -39,8 +39,9 @@ class CategoryController extends Controller
             $dictionary_posts = Dictionary_category::where('user_id', $user_id)->get();
             //ユーザーIDが一致する辞書カテゴリを全て抽出。
             $my_dictionary_id = Dictionary_category::where('user_id',"$user_id")->pluck('id');
+            
             $posts = Main_category::where('dictionary_id', $my_dictionary_id)->get();
-            return view('admin/category/main_category',compact('posts','dictionary_posts'));
+            return view('admin/category/main_category',compact('posts','dictionary_posts','my_dictionary_id'));
         }
     public function main_category(Request $request)
         {
