@@ -60,14 +60,14 @@ class CategoryController extends Controller
     public function get_sub_category()
         {
             $user_id = Auth::id();
-            $my_dictionary_id = Dictionary_category::where('user_id','=', $user_id)->pluck('id');
+            $my_dictionary_id = Dictionary_category::where('user_id', $user_id)->pluck('id');
             //ログイン中のユーザーが登録したDictionaryのIDを抽出。
-            $main_id = Main_category::whereIn('dictionary_id', '=', $my_dictionary_id)->pluck('id');
+            $main_id = Main_category::whereIn('dictionary_id', $my_dictionary_id)->pluck('id');
             //抽出したIDと一致するデータのIDをメインカテゴリテーブルから抽出。
-            $posts = Sub_category::whereIn('main_category_id', '=', $main_id)->get();
+            $posts = Sub_category::whereIn('main_category_id', $main_id)->get();
             //ログイン中のユーザーが登録したメインカテゴリのIDと一致するサブカテゴリを抽出。
-            $main_posts = Main_category::whereIn('dictionary_id', '=', $my_dictionary_id)->get();
-            return view('admin/category/sub_category',['posts'=> $posts, 'main_posts'=> $main_posts]);
+            $main_posts = Main_category::whereIn('dictionary_id', $my_dictionary_id)->get();
+            return view('admin/category/sub_category',compact('posts','main_posts','main_id','my_dictionary_id'));
         }
     public function sub_category(Request $request)
         {
