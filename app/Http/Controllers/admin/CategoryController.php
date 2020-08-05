@@ -62,11 +62,11 @@ class CategoryController extends Controller
             $user_id = Auth::id();
             $my_dictionary_id = Dictionary_category::where('user_id','=', $user_id)->pluck('id');
             //ログイン中のユーザーが登録したDictionaryのIDを抽出。
-            $main_id = Main_category::where('dictionary_id', '=', $my_dictionary_id)->pluck('id');
+            $main_id = Main_category::whereIn('dictionary_id', '=', $my_dictionary_id)->pluck('id');
             //抽出したIDと一致するデータのIDをメインカテゴリテーブルから抽出。
-            $posts = Sub_category::where('main_category_id', '=', $main_id)->get();
+            $posts = Sub_category::whereIn('main_category_id', '=', $main_id)->get();
             //ログイン中のユーザーが登録したメインカテゴリのIDと一致するサブカテゴリを抽出。
-            $main_posts = Main_category::where('dictionary_id', '=', $my_dictionary_id)->get();
+            $main_posts = Main_category::whereIn('dictionary_id', '=', $my_dictionary_id)->get();
             return view('admin/category/sub_category',['posts'=> $posts, 'main_posts'=> $main_posts]);
         }
     public function sub_category(Request $request)
