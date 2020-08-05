@@ -40,7 +40,7 @@ class CategoryController extends Controller
             //ユーザーIDが一致する辞書カテゴリを全て抽出。
             $my_dictionary_id = Dictionary_category::where('user_id',"$user_id")->pluck('id');
             
-            $posts = Main_category::where('dictionary_id', $my_dictionary_id)->get();
+            $posts = Main_category::whereIn('dictionary_id', $my_dictionary_id)->get();
             return view('admin/category/main_category',compact('posts','dictionary_posts','my_dictionary_id'));
         }
     public function main_category(Request $request)
@@ -86,23 +86,23 @@ class CategoryController extends Controller
     public function dictionary_delete(Request $request)
         {
             $dictionary_category = Dictionary_category::find($request->id);
-            $items = Dictionary_category::where('id', '>', $request->id)->get();
+            /* $items = Dictionary_category::where('id', '>', $request->id)->get(); */
             $dictionary_category->delete();
-            foreach($items as $item) {
+            /* foreach($items as $item) {
                 $item->id -= 1;
                 $item->save();
-            }
+            } */
             return redirect('admin/category/dictionary');
         }
     public function main_category_delete(Request $request)
         {
             $main_category = Main_category::find($request->id);
-            $items = Main_category::where('id', '>', $request->id)->get();
+            /* $items = Main_category::where('id', '>', $request->id)->get(); */
             $main_category->delete();
-            foreach($items as $item) {
+            /* foreach($items as $item) {
                 $item->id -= 1;
                 $item->save();
-            }
+            } */
             return redirect('admin/category/main_category');
         }
     public function sub_category_delete(Request $request)
