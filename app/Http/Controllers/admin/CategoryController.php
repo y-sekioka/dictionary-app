@@ -36,9 +36,9 @@ class CategoryController extends Controller
             //ログイン中のユーザーが登録したDictionaryのIDを抽出。
             $posts = Main_category::where('dictionary_id', 1/* $my_dictionary_id */)->get();
             //抽出したIDと一致するデータをメインカテゴリテーブルから抽出。
-            /* $dictionary_posts = Dictionary_category::where('user_id', $user_id)->get(); */
+            $dictionary_posts = Dictionary_category::where('user_id', $user_id)->get();
             //ユーザーIDが一致する辞書カテゴリを全て抽出。
-            return view('admin/category/main_category',compact('posts'/* 'dictionary_posts' */));
+            return view('admin/category/main_category',compact('posts','dictionary_posts'));
         }
     public function main_category(Request $request)
         {

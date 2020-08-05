@@ -19,7 +19,7 @@
                             <input type="text" class="form-control" name="name" value="" placeholder="メインカテゴリ名">
                         </div>
                     </div>
-                   {{--  <div class="form-group row">
+                    <div class="form-group row">
                         <div class="col-md-8">
                             <select class="form-contol" name="dictionary_id">
                                 <option value="">属する辞書を選択してください</option>
@@ -28,7 +28,7 @@
                                     @endforeach
                             </select>
                         </div>
-                    </div>  --}}
+                    </div>
                     <input type="submit" class="btn btn-primary" value="追加">
                 </form>
             </div>
@@ -61,7 +61,7 @@
                 </table>
             </div>
         </div>
-        {{-- <div class="row">
+        <div class="row">
             <div class="col-md-8">
                 <table class="table table-dark">
                     <thead>
@@ -86,7 +86,7 @@
                     </tbody>
                 </table>
             </div>
-        </div> --}}
+        </div>
         <div class= "category_link">
             <a href="{{ action('Admin\CategoryController@get_sub_category')}}">サブカテゴリへ</a>
         </div>
